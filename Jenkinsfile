@@ -15,5 +15,26 @@ pipeline {
                 archiveArtifacts artifacts: 'dist/nodejs-test.zip'
             }
         }
+        stage('deploy'){
+            when{
+                branch 'master'
+            }
+            script{
+                def remote = [:]
+                remote.name = 'node1'
+                remote.host = '192.168.1.130'
+                remote.user = 'vagrant'
+                remote.password = 'vagrant'
+                remote.allowAnyHosts = true
+                stage('Remote SSH') {
+                    sshPut remote: remote, from: 'dist/nodejs-test.zip', into: '/tmp'
+                    sshCommand remote: remote, command: '''
+                        rm -rf /vagrant/jenkins/deploy/nodejs-test &&
+                        mkdir -p /vagrant/jenkins/deploy/nodejs-test &&
+                        unzip /tmp/nodejs-test.zip -d /vagrant/jenkins/deploy/nodejs-test
+                    '''
+                }
+            }
+        }
     }
 }
