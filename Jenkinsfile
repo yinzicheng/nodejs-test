@@ -33,7 +33,7 @@ pipeline {
                             rm -rf /vagrant/jenkins/deploy/nodejs-test &&
                             mkdir -p /vagrant/jenkins/deploy/nodejs-test &&
                             unzip /tmp/nodejs-test.zip -d /vagrant/jenkins/deploy/nodejs-test &&
-                            /home/vagrant/.nvm/versions/node/v14.12.0/bin/npm start
+                            /home/vagrant/.nvm/versions/node/v14.12.0/bin/npm start --prefix /vagrant/jenkins/deploy/nodejs-test
                         '''
                     }
                 }
