@@ -11,7 +11,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'printenv'
-                echo "DISABLE_AUTH is ${DISABLE_AUTH}"
+                echo "DB_ENGINE is ${DB_ENGINE}"
                 echo "AWS_ACCESS_KEY_ID is ${AWS_ACCESS_KEY_ID}"
                 echo "AWS_SECRET_ACCESS_KEY is ${AWS_SECRET_ACCESS_KEY}"
                 echo "BITBUCKET user is ${BITBUCKET_COMMON_CREDS_USR}, BITBUCKET password is ${BITBUCKET_COMMON_CREDS_PSW}"
