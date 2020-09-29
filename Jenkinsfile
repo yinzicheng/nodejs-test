@@ -32,7 +32,8 @@ pipeline {
                         sshCommand remote: remote, command: '''
                             rm -rf /vagrant/jenkins/deploy/nodejs-test &&
                             mkdir -p /vagrant/jenkins/deploy/nodejs-test &&
-                            unzip /tmp/nodejs-test.zip -d /vagrant/jenkins/deploy/nodejs-test
+                            unzip /tmp/nodejs-test.zip -d /vagrant/jenkins/deploy/nodejs-test &&
+                            npm start
                         '''
                     }
                 }
