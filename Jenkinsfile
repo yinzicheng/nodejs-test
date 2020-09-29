@@ -3,9 +3,9 @@ pipeline {
     stages {
         stage('npm install') {
             steps {
-                echo 'install dependencies'
-                sh 'npm build'
-                // archiveArtifacts artifacts: 'dist/trainSchedule.zip'
+                nodejs(nodeJSInstallationName: 'NodeJS 14.11.0') {
+                    sh 'npm config ls'
+                }
             }
         }
     }
