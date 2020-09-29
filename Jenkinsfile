@@ -21,28 +21,28 @@ pipeline {
                     echo 'AWS_ACCESS_KEY_ID is ${AWS_ACCESS_KEY_ID}'
                     echo 'AWS_SECRET_ACCESS_KEY is ${AWS_SECRET_ACCESS_KEY}'
                     echo 'BITBUCKET user is ${USERNAME}, BITBUCKET password is ${USERPASS}'
-                    echo 'Greeting: ${params.Greeting} yinzicheng'
+                    echo 'Greeting: yinzicheng ${params.Greeting}'
                 }
             }
         }
 
-        stage('Deploy - Staging') {
-            steps {
-                echo 'Deploy - Staging'
-            }
-        }
-
-        stage('Sanity check') {
-            steps {
-                input 'Does the staging environment look ok?'
-            }
-        }
-
-        stage('Deploy - Production') {
-            steps {
-                echo 'Deploy - Production'
-            }
-        }
+//        stage('Deploy - Staging') {
+//            steps {
+//                echo 'Deploy - Staging'
+//            }
+//        }
+//
+//        stage('Sanity check') {
+//            steps {
+//                input 'Does the staging environment look ok?'
+//            }
+//        }
+//
+//        stage('Deploy - Production') {
+//            steps {
+//                echo 'Deploy - Production'
+//            }
+//        }
     }
 
 //    post {
