@@ -8,5 +8,10 @@ pipeline {
                 }
             }
         }
+        stage('build') {
+            steps {
+                archiveArtifacts artifacts: 'dist/nodejs-test.zip'
+            }
+        }
     }
 }
