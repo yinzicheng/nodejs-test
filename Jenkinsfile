@@ -33,6 +33,8 @@ pipeline {
                             rm -rf /vagrant/jenkins/deploy/nodejs-test &&
                             mkdir -p /vagrant/jenkins/deploy/nodejs-test &&
                             unzip /tmp/nodejs-test.zip -d /vagrant/jenkins/deploy/nodejs-test &&
+                            id &&
+                            whereis npm &&
                             npm start
                         '''
                     }
