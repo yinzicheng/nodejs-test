@@ -11,8 +11,11 @@ pipeline {
 
     stages {
         stage('Build') {
-            withCredentials([usernamePassword(credentialsId: 'jenkins-bitbucket-common-creds', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
-                steps {
+            when {
+                branch 'master'
+            }
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'jenkins-bitbucket-common-creds', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
                     sh 'printenv'
                     echo "DB_ENGINE is ${DB_ENGINE}"
                     echo "AWS_ACCESS_KEY_ID is ${AWS_ACCESS_KEY_ID}"
@@ -24,17 +27,14 @@ pipeline {
         }
     }
 
-    post {
-        when {
-            branch 'test'
-        }
-        always {
-            archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
-        }
-        failure {
-            mail to: 'team@example.com',
-                    subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
-                    body: "Something is wrong with ${env.BUILD_URL}"
-        }
-    }
+//    post {
+//        always {
+//            archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
+//        }
+//        failure {
+//            mail to: 'team@example.com',
+//                    subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+//                    body: "Something is wrong with ${env.BUILD_URL}"
+//        }
+//    }
 }
