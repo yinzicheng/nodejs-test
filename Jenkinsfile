@@ -10,7 +10,7 @@ pipeline {
         }
         stage('build') {
             steps {
-                sh 'rm -rf dist && makedir dist'
+                sh 'rm -rf dist && mkdir dist'
                 zip zipFile: 'dist/nodejs-test.zip', archive: true
                 archiveArtifacts artifacts: 'dist/nodejs-test.zip'
             }
