@@ -21,7 +21,6 @@ pipeline {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'jenkins-bitbucket-common-creds', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
                     sh 'printenv'
-                    echo node1_ip
                     echo "DB_ENGINE is ${DB_ENGINE}"
                     echo "AWS_ACCESS_KEY_ID is ${AWS_ACCESS_KEY_ID}"
                     echo "AWS_SECRET_ACCESS_KEY is ${AWS_SECRET_ACCESS_KEY}"
